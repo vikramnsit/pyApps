@@ -5,7 +5,7 @@ import pandas as pd
 def main():
     engine = get_db_engine()
     with engine.connect() as connection:
-        result = connection.execute(text("SELECT 1 as TEST"))
+        result = connection.execute(text("SELECT 17 as TEST"))
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
         print(df)
 
