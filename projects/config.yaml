@@ -1,0 +1,6 @@
+database:
+  server: DESKTOP-CN12MMO\MYSQLWORKSPACE
+  db: AdventureWorks2019
+  user:
+  pwd:
+
