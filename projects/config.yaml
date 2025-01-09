@@ -7,6 +7,9 @@ database:
 weathermap:
   latitude: 43.675
   longitude: -79.3474
-  part: include
-  apikey: 2050e8e8eed8513bea5353a0a7325f73
+  part: hourly
+  apikey: 74b98793aadc3d5f77bdc4e31391c2dc
+
+omdb:
+  apikey: b17ec89c
 
