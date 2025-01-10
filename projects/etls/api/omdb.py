@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from projects.config import Config
 import projects.db as db
-import requests
+from projects.services.ApiClient import ApiClient
 
 
 class Movies:
@@ -20,15 +20,14 @@ class Movies:
             "Accept": "application/json"
         }
 
-        response = requests.get(self.api_url)
+        apiclient = ApiClient()
+        response = apiclient.get(self.api_url)
 
         if response.status_code == 200:
             api_content = response.json()
             df = pd.DataFrame(api_content)
-            columns_list = df.columns
-            print(columns_list)
             df['Ratings'] = df['Ratings'].apply(lambda x: json.dumps(x) if isinstance(x, dict) else x)
-
+            print(df)
             return df
         else:
             status = response.status_code
@@ -37,6 +36,7 @@ class Movies:
     def load(self, df:pd.DataFrame):
         engine = db.get_db_engine()
         df.to_sql("Movies", engine, index=False, if_exists="append")
+        print('Data is successfully loaded in the table')
 
 w = Movies()
 df = w.extract()
