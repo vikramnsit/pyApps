@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine
 from projects.config import Config
 
-def get_db_engine():
+
+def get_db_engine(self):
     config = Config.load_config()['database']
     server = config['server']
     database = config['db']

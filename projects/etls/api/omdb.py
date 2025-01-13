@@ -40,4 +40,4 @@ class Movies:
 
 w = Movies()
 df = w.extract()
-w.load(df)
+# w.load(df)
