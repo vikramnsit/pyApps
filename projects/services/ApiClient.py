@@ -8,7 +8,7 @@ from projects.services.Service import Service
 class ApiClient(Service):
     _headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1, WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.2840.99 Safari/537.36'}
     _timeout = 3 * 60   #Number of seconds for the HTTP request to die
-
+    _retry = 3
     class HTTP(Enum):
         GET = 'GET'
         POST = 'POST'
@@ -39,9 +39,9 @@ class ApiClient(Service):
             if http_method == self.HTTP.GET:
                 response = requests.get(url, params=data, headers=self._headers, timeout=self._timeout, auth=auth)
             elif http_method==self.HTTP.POST:
-                response = requests.post(url, params=data, json=json, headers=self._headers, timeout=self._timeout, auth=auth)
+                response = requests.post(url, data=data, json=json, headers=self._headers, timeout=self._timeout, auth=auth)
             elif http_method == self.HTTP.DELETE:
-                response = requests.delete(url, params=data, json=json, headers=self._headers, timeout=self._timeout, auth=auth)
+                response = requests.delete(url, data=data, json=json, headers=self._headers, timeout=self._timeout, auth=auth)
             return response
         except Exception as error:
-            return self.send_request(url, params=data, json=json, http_method=http_method,headers=self.headers, retry=self.retry - 1, auth=auth)
+            return self.send_request(url, data=data, json=json, http_method=http_method,headers=headers, retry=retry - 1, auth=auth)
