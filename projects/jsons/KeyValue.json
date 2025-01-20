@@ -1,5 +1,7 @@
 {
-  "name": "John",
-  "age": 30,
-  "city": "New York"
+  "items": [
+    {"key": "name", "value": "John"},
+    {"key": "age", "value": 30},
+    {"key": "city", "value": "New York"}
+  ]
 }

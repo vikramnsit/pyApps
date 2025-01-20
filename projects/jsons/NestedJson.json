@@ -1,8 +1,27 @@
 {
-  "name": "John",
-  "address": {
-    "street": "123 Main St",
-    "city": "New York",
-    "postal_code": "10001"
+  "company": {
+    "name": "TechCorp",
+    "departments": {
+      "IT": {
+        "employees": [
+          {
+            "name": "John",
+            "skills": ["Python", "JavaScript"]
+          },
+          {
+            "name": "Jane",
+            "skills": ["Java", "C#"]
+          }
+        ]
+      },
+      "HR": {
+        "employees": [
+          {
+            "name": "Alice",
+            "role": "HR Manager"
+          }
+        ]
+      }
+    }
   }
 }
